@@ -6,7 +6,7 @@
 
 | Lớp | Định nghĩa của bạn | Ví dụ/điểm phân biệt |
 | --- | --- | --- |
-| `car` | | |
+| `car` |Xe ô tô con chở người: sedan, hatchback, SUV, crossover, taxi, xe cảnh sát loại sedan | |
 | `truck` | | |
 | `bus` | | |
 | `van` | | |
