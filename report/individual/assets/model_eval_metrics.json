@@ -1,0 +1,8 @@
+{
+  "precision": 0.3740479977123408,
+  "recall": 0.2630268660073698,
+  "map50": 0.2705266582637366,
+  "map50_95": 0.19695122570735624,
+  "eval_images": 10,
+  "checkpoint": "C:\\Users\\Quoc Manh\\AppData\\Local\\Temp\\claude\\29abb69cf93759cc\\3107f398-91bd-4688-9496-82722aebabf9\\scratchpad\\run\\runs\\detect\\Day2-Lab\\outputs\\yolo26_runs\\vehicle_annotation\\weights\\best.pt"
+}
