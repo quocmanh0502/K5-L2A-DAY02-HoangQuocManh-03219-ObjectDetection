@@ -7,7 +7,7 @@
 - Email: hoangquocmanh2004@gmail.com
 - Lớp: K5-L2A
 - Link repo bài làm: https://github.com/quocmanh0502/K5-L2A-DAY02-HoangQuocManh-03219-ObjectDetection
-- Link Colab: https://colab.research.google.com/drive/10WIycuS0-VulBIY8zeJuI22PpjT5fuNE (TODO – chưa chạy xong; lần thử ngày 09/11/2026 gặp lỗi "Không gán được phần phụ trợ", xem mục 6). Kết quả ở mục 5 hiện là bản chạy local trên máy cá nhân (GPU RTX 3050 Laptop). Bằng chứng chạy local: notebook đã thực thi kèm toàn bộ output [assets/day2_annotation_to_yolo_executed_local.ipynb](assets/day2_annotation_to_yolo_executed_local.ipynb) (cell đầu in commit `fc41e9a` được clone từ repo trên GitHub), log train và ảnh chỉ số trong [assets/yolo26_runs/](assets/yolo26_runs/).
+- Link Colab: https://colab.research.google.com/drive/10WIycuS0-VulBIY8zeJuI22PpjT5fuNE (**không chạy được trên Colab đến hạn nộp**: Colab báo lỗi "Không gán được phần phụ trợ", ảnh chụp ở mục 6). Kết quả ở mục 5 hiện là bản chạy local trên máy cá nhân (GPU RTX 3050 Laptop). Bằng chứng chạy local: notebook đã thực thi kèm toàn bộ output [assets/day2_annotation_to_yolo_executed_local.ipynb](assets/day2_annotation_to_yolo_executed_local.ipynb) (cell đầu in commit `fc41e9a` được clone từ repo trên GitHub), log train và ảnh chỉ số trong [assets/yolo26_runs/](assets/yolo26_runs/).
 
 ## 2. Schema và mini guideline
 
@@ -28,6 +28,10 @@ Phần cần giảng viên làm rõ:
 
 1. **Thứ tự class ID của gold và eval khác `data.yaml`.** Khi so từng box trùng vị trí (IoU ≥ 0.5) và xem ảnh crop, gold train và nhãn eval dùng `1 = van`, `2 = truck`, `3 = bus`; còn schema bài (`data.yaml`, README) là `1 truck`, `2 bus`, `3 van`. Ví dụ: xe buýt ở `drive_002`, `drive_008`, `drive_009` được gold gán ID 3; xe van ở `drive_002`, `drive_008`, `drive_040` được gold gán ID 1; xe tải/xe cứu hộ ở `drive_005`, `drive_008`, `drive_009` được gold gán ID 2. Nhãn eval có cùng hiện tượng (`drive_052`, `drive_053`: xe buýt gán ID 3).
 2. **Xe đỗ ven đường và xe ở xa.** Gold không gán xe đỗ ven đường và xe nhỏ ở xa phía trên khung hình (ví dụ `drive_028`, `drive_002`), trong khi CP1 ghi "xe đỗ, bị che hoặc bị cắt khung vẫn cần xử lý theo guideline". Cần quy tắc rõ ràng cho hai trường hợp này.
+
+Nguồn gold: `gold_train_labels.rar` do LabCoach gửi trên kênh lớp lúc 19:26 ngày 09/11/2026 (ảnh dưới). Đã giải nén lại và đối chiếu: thư mục `gold_train_labels/` dùng để chấm giống hệt 50/50 file trong file rar, nên việc lệch ID không phải do giải nén sai hay dùng nhầm file.
+
+![Tin nhắn gửi gold train của LabCoach](assets/gold_rar_source.png)
 
 ## 3. Annotation và self-QC
 
@@ -112,8 +116,12 @@ Trả lời bốn câu hỏi cuối notebook:
 | CP5 — Gold QC | 442 box thừa | Vẽ chồng box gold và box của mình | Gold không gán xe đỗ và xe ở xa; cần quy tắc trong guideline |
 | CP4 — push | `git push` báo `Invalid username or token` | Đăng nhập lại bằng `gh auth login` + `gh auth setup-git` | Push thành công |
 | CP6 — chạy notebook | Ultralytics 8.4 lưu kết quả vào `runs/detect/...`, zip thiếu `eval_predictions/` và `yolo26_runs/` | Copy thủ công hai thư mục vào `assets/`, bỏ `.pt` | Đủ ảnh và log |
-| CP6 — Colab (09/11/2026) | Colab báo "Không gán được phần phụ trợ" (Failed to assign a backend), không có runtime GPU | Đợi rồi thử lại; đổi runtime sang CPU | TODO – chưa chạy xong trên Colab; tạm chạy local trên RTX 3050, có notebook đã thực thi làm bằng chứng |
+| CP6 — Colab (09/11/2026) | Colab báo "Không gán được phần phụ trợ" (Failed to assign a backend), không có runtime GPU | Đợi rồi thử lại; đổi runtime sang CPU | Vẫn không chạy được trên Colab đến hạn nộp. Đã chạy local trên RTX 3050 thay thế, có notebook đã thực thi làm bằng chứng |
 | Pre-label | Ultralytics bản cũ không tải được `yolo11m.pt` | Nâng cấp Ultralytics, đổi sang model YOLO11 tải được | Pre-label chạy được cho `drive_032`–`drive_050` |
+
+Ảnh chụp lỗi Colab khi chạy cell đầu (clone repo) của notebook `day2_annotation_to_yolo.ipynb`:
+
+![Lỗi Colab: Không gán được phần phụ trợ](assets/colab_error.png)
 
 ## 7. Tự đánh giá theo rubric
 
