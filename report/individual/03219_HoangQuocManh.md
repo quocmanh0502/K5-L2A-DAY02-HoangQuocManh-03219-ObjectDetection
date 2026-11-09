@@ -29,9 +29,7 @@ Phần cần giảng viên làm rõ:
 1. **Thứ tự class ID của gold và eval khác `data.yaml`.** Khi so từng box trùng vị trí (IoU ≥ 0.5) và xem ảnh crop, gold train và nhãn eval dùng `1 = van`, `2 = truck`, `3 = bus`; còn schema bài (`data.yaml`, README) là `1 truck`, `2 bus`, `3 van`. Ví dụ: xe buýt ở `drive_002`, `drive_008`, `drive_009` được gold gán ID 3; xe van ở `drive_002`, `drive_008`, `drive_040` được gold gán ID 1; xe tải/xe cứu hộ ở `drive_005`, `drive_008`, `drive_009` được gold gán ID 2. Nhãn eval có cùng hiện tượng (`drive_052`, `drive_053`: xe buýt gán ID 3).
 2. **Xe đỗ ven đường và xe ở xa.** Gold không gán xe đỗ ven đường và xe nhỏ ở xa phía trên khung hình (ví dụ `drive_028`, `drive_002`), trong khi CP1 ghi "xe đỗ, bị che hoặc bị cắt khung vẫn cần xử lý theo guideline". Cần quy tắc rõ ràng cho hai trường hợp này.
 
-Nguồn gold: `gold_train_labels.rar` do LabCoach gửi trên kênh lớp lúc 19:26 ngày 09/11/2026 (ảnh dưới). Đã giải nén lại và đối chiếu: thư mục `gold_train_labels/` dùng để chấm giống hệt 50/50 file trong file rar, nên việc lệch ID không phải do giải nén sai hay dùng nhầm file.
-
-![Tin nhắn gửi gold train của LabCoach](assets/gold_rar_source.png)
+Nguồn gold: `gold_train_labels.rar` do LabCoach gửi trên kênh lớp lúc 19:26 ngày 09/11/2026. Đã giải nén lại và đối chiếu: thư mục `gold_train_labels/` dùng để chấm giống hệt 50/50 file trong file rar, nên việc lệch ID không phải do giải nén sai hay dùng nhầm file.
 
 ## 3. Annotation và self-QC
 
