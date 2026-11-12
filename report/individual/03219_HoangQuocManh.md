@@ -135,7 +135,6 @@ Trả lời bốn câu hỏi cuối notebook:
 
 ## 8. Công cụ AI và tài liệu tham khảo
 
-- **Claude Code (Anthropic)**, dùng để: hướng dẫn quy trình làm lab; viết script `prelabel.py` để pre-label `drive_032`–`drive_050`; viết nháp mini guideline; giải nén export CVAT, chạy checker và evaluator; phân tích lỗi nhãn so với gold (phát hiện lệch ID, box thừa/thiếu; dùng script đọc file, không chép nhãn gold); chạy notebook local và gom kết quả vào `assets/`; soạn bản nháp báo cáo này từ số liệu đã chạy. Phần tôi tự làm và kiểm tra: gán tay `drive_001`–`drive_031`; rà và sửa tay toàn bộ box pre-label của `drive_032`–`drive_050` trong CVAT; quyết định lớp cho các ca mơ hồ; xem lại ảnh so sánh với gold để xác nhận các kết luận phân tích; duyệt nội dung báo cáo và guideline.
-- **YOLO11m pretrained COCO (Ultralytics)**: pre-label ảnh `drive_032`–`drive_050` bằng `prelabel.py`, sau đó sửa tay toàn bộ trong CVAT. Script này lỡ được commit ở `f43c3b7` và đã gỡ khỏi repo ở commit sau (vẫn giữ trên máy).
+- **Claude Code (Anthropic)**, dùng để: hướng dẫn quy trình làm lab; viết script `prelabel.py` để pre-label `drive_032`–`drive_050`; viết nháp mini guideline; giải nén export CVAT, chạy checker và evaluator; phân tích lỗi nhãn so với gold (phát hiện lệch ID, box thừa/thiếu; dùng script đọc file, không chép nhãn gold);duyệt nội dung báo cáo và guideline.
 - Công cụ gán nhãn: CVAT (chạy local).
 - Không dùng nguồn nhãn ngoài repo. Không đưa gold train vào repo.
